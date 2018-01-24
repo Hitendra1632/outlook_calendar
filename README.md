@@ -22,7 +22,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    For getting a user access token call:
+    OutlookCalendar::AccessToken.new(code, app_id, app_secret_key, scope, redirect_uri).call
+    
+    For getting a user refresh token 
+    OutlookCalendar::RefreshToken.new(token, refresh_token, client_id, client_secret, redirect_uri).call
+    
+    For getting a user calendar
+    OutlookCalendar::RefreshToken.new(token).call
+    
+    For getting calendar based event
+    OutlookCalendar::RefreshToken.new(token, start_time, end_time, select, calendar_id).call
+    
+    default value of select = 'Subject' but you can also pass your values.
+    
+    For getting events
+    OutlookCalendar::RefreshToken.new(token, start_time, end_time, select).call
+    
+    For creating a event 
+    OutlookCalendar::CreateEvent.new(token, calendar_id, params, select).call
+     pass the select for response same like above
+     params = {title: '', start_time: '', end_time: '', timezone: '', content_type: '', content: '', Attendees: [{email: '', name: ''}]}
+     
+    For deleting a event
+    OutlookCalendar::DeleteEvent.new(token, event_id).call
+
 
 ## Development
 
