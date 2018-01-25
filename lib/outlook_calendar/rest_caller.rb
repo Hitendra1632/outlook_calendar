@@ -21,7 +21,7 @@ module OutlookCalendar
     end
 
     def response
-      send(method.downcase)
+      @response = send(method.downcase)
     end
 
     def get
