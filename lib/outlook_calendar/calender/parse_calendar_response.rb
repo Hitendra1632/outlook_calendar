@@ -50,7 +50,7 @@ module OutlookCalendar
     end
 
     def owner(owner_value)
-      return [] unless owner_value.present?
+      return {} unless owner_value.present?
       { name: owner_value['Name'], address: owner_value['Address'] }
     end
   end
