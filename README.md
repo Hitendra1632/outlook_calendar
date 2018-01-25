@@ -61,3 +61,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Hitend
 ## Code of Conduct
 
 Everyone interacting in the OutlookCalendar project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Hitendra1632/outlook_calendar/blob/master/CODE_OF_CONDUCT.md).
+
+
+## Bug fixes
+Remove issue of double creation of event.
