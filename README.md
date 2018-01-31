@@ -65,3 +65,4 @@ Everyone interacting in the OutlookCalendar project’s codebases, issue tracker
 
 ## Bug fixes
 Remove issue of double creation of event.
+version 0.1.7, fixing the response for event deletion

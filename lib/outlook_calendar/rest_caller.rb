@@ -16,7 +16,7 @@ module OutlookCalendar
     private
 
     def parse_response
-      return nil unless response
+      return nil unless response.present?
       JSON.parse(response)
     end
 
