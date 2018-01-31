@@ -1,6 +1,6 @@
 # OutlookCalendar
 
-The Outlook gem is a api implementation of the  Calendar APIs. It provides basic CRUD functionality for Outlook calendar.
+The Outlook calendar gem is a api implementation of the Calendar APIs. It provides basic CRUD functionality for Outlook calendar.
 
 
 Rails gem for outlook calendar integration
