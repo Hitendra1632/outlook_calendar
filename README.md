@@ -1,6 +1,7 @@
 # OutlookCalendar
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/outlook_calendar`. To experiment with that code, run `bin/console` for an interactive prompt.
+The Outlook gem is a api implementation of the  Calendar APIs. It provides basic CRUD functionality for Outlook calendar.
+
 
 Rails gem for outlook calendar integration
 
@@ -64,5 +65,6 @@ Everyone interacting in the OutlookCalendar project’s codebases, issue tracker
 
 
 ## Bug fixes
-Remove issue of double creation of event.
-version 0.1.7, fixing the response for event deletion
+version 0.1.6 Remove issue of double creation of event. 
+
+version 0.1.7, fixing the response for event deletion.
