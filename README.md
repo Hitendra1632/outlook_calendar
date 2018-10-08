@@ -33,7 +33,14 @@ Or install it yourself as:
     OutlookCalendar::RefreshToken.new(token).call
     
     For getting calendar based event
-    OutlookCalendar::RefreshToken.new(token, start_time, end_time, select, calendar_id).call
+    OutlookCalendar::RefreshToken.new(token, params, calendar_id).call
+    
+    params = {
+                'startDateTime'=> from_date,
+                'endDateTime'=> to_date,
+                '$select'=> 'Subject,Start,End',
+                '$top'=> 1000
+              }
     
     default value of select = 'Subject' but you can also pass your values.
     
@@ -68,3 +75,5 @@ Everyone interacting in the OutlookCalendar project’s codebases, issue tracker
 version 0.1.6 Remove issue of double creation of event. 
 
 version 0.1.7, fixing the response for event deletion.
+
+version 0.1.9, Adding more params for getting events.
