@@ -30,10 +30,18 @@ Or install it yourself as:
     OutlookCalendar::RefreshToken.new(token, refresh_token, client_id, client_secret, redirect_uri).call
     
     For getting a user calendar
-    OutlookCalendar::RefreshToken.new(token).call
+    OutlookCalendar::Calenders.new(token).call
     
     For getting calendar based event
-    OutlookCalendar::RefreshToken.new(token, start_time, end_time, select, calendar_id).call
+    OutlookCalendar::UserEvents.new(
+            token, outlook_params, selected_calendar
+          )
+    params = {
+                'startDateTime'=> from_date,
+                'endDateTime'=> to_date,
+                '$select'=> 'Subject,Start,End',
+                '$top'=> 1000
+              }      
     
     default value of select = 'Subject' but you can also pass your values.
     
@@ -68,3 +76,5 @@ Everyone interacting in the OutlookCalendar project’s codebases, issue tracker
 version 0.1.6 Remove issue of double creation of event. 
 
 version 0.1.7, fixing the response for event deletion.
+
+version 0.1.9, Adding more params for getting events.

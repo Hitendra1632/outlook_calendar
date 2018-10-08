@@ -1,12 +1,10 @@
 module OutlookCalendar
   class UserEvents
-    attr_reader :token, :start_time, :end_time, :select, :calendar_id
+    attr_reader :token, :params, :calendar_id
 
-    def initialize(token, start_time, end_time, calendar_id = nil, select = 'Subject')
+    def initialize(token, params, calendar_id = nil)
       @token = token
-      @start_time = start_time
-      @end_time = end_time
-      @select = select
+      @params = params
       @calendar_id = calendar_id
     end
 
@@ -33,12 +31,8 @@ module OutlookCalendar
     end
 
     def url
-      return "https://outlook.office.com/api/v2.0/me/calendars/#{calendar_id}/calendarview#{params}" if calendar_id.present?
-      "https://outlook.office.com/api/v2.0/me/calendarview#{params}"
-    end
-
-    def params
-      "?startDateTime=#{start_time}&endDateTime=#{end_time}&$select=#{select}"
+      return "https://outlook.office.com/api/v2.0/me/calendars/#{calendar_id}/calendarview?#{params}" if calendar_id.present?
+      "https://outlook.office.com/api/v2.0/me/calendarview?#{params}"
     end
   end
 end
