@@ -1,4 +1,3 @@
-require 'oauth2'
 require 'json'
 require 'rest-client'
 require 'outlook_calendar/version'

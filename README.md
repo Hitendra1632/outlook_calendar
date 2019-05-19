@@ -1,4 +1,4 @@
-# OutlookCalendar
+# Outlook Calendar
 
 The Outlook calendar gem is a api implementation of the Calendar APIs. It provides basic CRUD functionality for Outlook calendar.
 
@@ -23,39 +23,50 @@ Or install it yourself as:
 
 ## Usage
 
-    For getting a user access token call:
-    OutlookCalendar::AccessToken.new(code, app_id, app_secret_key, scope, redirect_uri).call
-    
-    For getting a user refresh token 
-    OutlookCalendar::RefreshToken.new(token, refresh_token, client_id, client_secret, redirect_uri).call
-    
-    For getting a user calendar
-    OutlookCalendar::Calenders.new(token).call
-    
-    For getting calendar based event
-    OutlookCalendar::UserEvents.new(
-            token, outlook_params, selected_calendar
-          )
-    params = {
-                'startDateTime'=> from_date,
-                'endDateTime'=> to_date,
-                '$select'=> 'Subject,Start,End',
-                '$top'=> 1000
-              }      
-    
-    default value of select = 'Subject' but you can also pass your values.
-    
-    For getting events
-    OutlookCalendar::RefreshToken.new(token, start_time, end_time, select).call
-    
-    For creating a event 
-    OutlookCalendar::CreateEvent.new(token, calendar_id, params, select).call
-     pass the select for response same like above
-     params = {title: '', start_time: '', end_time: '', timezone: '', content_type: '', content: '', Attendees: [{email: '', name: ''}]}
-     
-    For deleting a event
-    OutlookCalendar::DeleteEvent.new(token, event_id).call
+To get a user access token
+```ruby
+OutlookCalendar::AccessToken.new(code, client_id, client_secret, scope, redirect_uri).call
+```
 
+To refresh a user access token
+```ruby
+OutlookCalendar::RefreshToken.new(refresh_token, client_id, client_secret, scope, redirect_uri).call
+```
+
+To get calendars
+```ruby
+OutlookCalendar::Calenders.new(token).call
+```
+
+To get events
+```ruby
+params = {
+  'startDateTime'=> from_date,
+  'endDateTime'=> to_date,
+  '$select'=> 'Subject,Start,End', # 'Subject' by default
+  '$top'=> 1000
+}
+OutlookCalendar::UserEvents.new(token, params, selected_calendar)
+```
+
+To create an event
+```ruby
+params = {
+  title: '',
+  start_time: '',
+  end_time: '',
+  timezone: '',
+  content_type: '',
+  content: '',
+  Attendees: [{ email: '', name: '' }]
+}
+OutlookCalendar::CreateEvent.new(token, calendar_id, params, select).call
+```
+
+To delete an event
+```ruby
+OutlookCalendar::DeleteEvent.new(token, event_id).call
+```
 
 ## Development
 
@@ -71,10 +82,16 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Hitend
 
 Everyone interacting in the OutlookCalendar project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Hitendra1632/outlook_calendar/blob/master/CODE_OF_CONDUCT.md).
 
+## Release Notes
 
-## Bug fixes
-version 0.1.6 Remove issue of double creation of event. 
+version 0.1.6, Remove issue of double creation of event.
 
-version 0.1.7, fixing the response for event deletion.
+version 0.1.7, Fix the response for event deletion.
 
-version 0.1.9, Adding more params for getting events.
+version 0.1.9, Add more params for getting events.
+
+version 0.2.0, Upgrade to new auth APIs.
+
+## To Do
+
+Upgrade to Graph APIs.

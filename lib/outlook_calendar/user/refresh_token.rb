@@ -1,12 +1,12 @@
 module OutlookCalendar
   class RefreshToken
-    attr_reader :token, :refresh_token, :client_id, :client_secret, :redirect_uri
+    attr_reader :refresh_token, :client_id, :client_secret, :scope, :redirect_uri
 
-    def initialize(token, refresh_token, client_id, client_secret, redirect_uri)
-      @token = token
+    def initialize(refresh_token, client_id, client_secret, scope, redirect_uri)
       @refresh_token = refresh_token
       @client_id = client_id
       @client_secret = client_secret
+      @scope = scope
       @redirect_uri = redirect_uri
     end
 
@@ -33,15 +33,16 @@ module OutlookCalendar
     def attributes
       {
         refresh_token: refresh_token,
-        redirect_uri: redirect_uri,
         client_id: client_id,
         client_secret: client_secret,
+        scope: scope,
+        redirect_uri: redirect_uri,
         grant_type: 'refresh_token'
       }
     end
 
     def url
-      'https://login.live.com/oauth20_token.srf'
+      'https://login.microsoftonline.com/common/oauth2/v2.0/token'
     end
   end
 end
