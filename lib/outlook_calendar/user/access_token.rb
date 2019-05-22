@@ -1,35 +1,48 @@
 module OutlookCalendar
   class AccessToken
-    attr_reader :code, :app_id, :app_secret_key, :scope, :redirect_uri
+    attr_reader :code, :client_id, :client_secret, :scope, :redirect_uri
 
-    def initialize(code, app_id, app_secret_key, scope, redirect_uri)
+    def initialize(code, client_id, client_secret, scope, redirect_uri)
       @code = code
-      @app_id = app_id
-      @app_secret_key = app_secret_key
+      @client_id = client_id
+      @client_secret = client_secret
       @scope = scope
       @redirect_uri = redirect_uri
     end
 
     def call
-      access_token
+      response
     end
 
     private
 
-    def access_token
-      user_token_response
+    def response
+      caller
     end
 
-    def oauth_client
-      @oauth_client = OAuth2::Client.new(app_id,
-                                         app_secret_key,
-                                         site: 'https://login.microsoftonline.com',
-                                         authorize_url: '/common/oauth2/v2.0/authorize',
-                                         token_url: '/common/oauth2/v2.0/token')
+    def caller
+      RestCaller.new('post', url, headers, attributes).call
     end
 
-    def user_token_response
-      @user_token_response = oauth_client.auth_code.get_token(code, redirect_uri: redirect_uri, scope: scope)
+    def headers
+      {
+        'Content-Type' => 'application/x-www-form-urlencoded'
+      }
+    end
+
+    def attributes
+      {
+        code: code,
+        client_id: client_id,
+        client_secret: client_secret,
+        scope: scope,
+        redirect_uri: redirect_uri,
+        grant_type: 'authorization_code'
+      }
+    end
+
+    def url
+      'https://login.microsoftonline.com/common/oauth2/v2.0/token'
     end
   end
 end

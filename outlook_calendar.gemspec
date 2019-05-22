@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["hitendra1632@gmail.com"]
 
   spec.summary       = %q{A gem for outlook calendar}
-  spec.description   = %q{A wapper for outlook calender }
+  spec.description   = %q{A wrapper for outlook calender }
   spec.homepage      = 'https://github.com/Hitendra1632/outlook_calendar'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -19,8 +19,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  
-  spec.add_runtime_dependency "oauth2", "~> 1.4"
+
   spec.add_runtime_dependency "rest-client"
 
   spec.add_development_dependency "bundler", "~> 1.16"

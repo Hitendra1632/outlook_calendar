@@ -28,7 +28,7 @@ module OutlookCalendar
     end
 
     def url
-      @url = 'https://outlook.office365.com/api/v2.0/me/calendars'
+      @url = 'https://outlook.office.com/api/v2.0/me/calendars'
     end
   end
 end
